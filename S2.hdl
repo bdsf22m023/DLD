@@ -1,0 +1,23 @@
+CHIP S2 {
+    IN w, x, y, z;
+    OUT A,B,C,D;
+    PARTS:
+	Not(in=x, out=Notx);
+	Not(in=y, out=Noty);
+	Not(in=z, out=Notz);
+        And(a=x, b=y, out=w1);
+        And(a=x, b=z, out=w2);
+	Or(a=w,b=w1, out=w0);
+	Or(a=w2, b=w0, out=A);
+        And(a=Notx, b=y, out=w3);
+	And(a=Notx, b=z, out=w4);
+        And(a=x, b=Noty, out=q);
+	And(a=Notz, b=q, out=w5);
+	Or(a=w3, b=w4, out=p);
+	Or(a=w5, b=p, out=B);
+	And(a=y, b=z, out=w6);
+	And(a=Noty, b=Notz, out=w7);
+        Or(a=w6, b=w7, out=C);
+	Not(in=Notz, out=w8);
+	Not(in=w8, out=D);
+}

@@ -1,0 +1,10 @@
+CHIP S1 {
+    IN x, y, z;
+    OUT out;
+    PARTS:
+        And(a=x, b=z, out=w1);
+        And(a=y, b=z, out=w2);
+        And(a=x, b=y, out=w3);
+        Or(a=w1, b=w2, out=w4);
+        Or(a=w3, b=w4, out=out);
+}
